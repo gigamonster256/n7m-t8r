@@ -32,9 +32,14 @@
             --tropical-mint-500: oklch(80.51% 0.166 164.38);
         }
         
-        body { 
-            font-family: 'Inter', sans-serif;
+        html, body {
+            min-height: 100vh;
             background: linear-gradient(135deg, var(--gunmetal-900) 0%, var(--gunmetal-800) 50%, var(--gunmetal-950) 100%);
+            background-attachment: fixed;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
         }
         
         .title-gradient {
@@ -141,7 +146,7 @@
                         id="output" 
                         rows="4"
                         readonly
-                        class="w-full px-4 py-3 input-bg rounded-xl output-text font-mono focus:outline-none transition-all resize-none"
+                        class="w-full px-4 py-3 input-bg rounded-xl output-text focus:outline-none transition-all resize-none"
                         placeholder="Numeronym will appear here..."
                     ></textarea>
                 </div>
