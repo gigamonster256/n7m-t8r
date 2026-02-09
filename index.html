@@ -161,9 +161,7 @@
             </div>
         </div>
         
-        <p class="text-center footer-text mt-6 text-sm">
-            Transform words like "internationalization" into "i18n"
-        </p>
+        <p id="tagline" class="text-center footer-text mt-6 text-sm"></p>
     </div>
     
     <script>
@@ -203,14 +201,14 @@
         
         copyBtn.addEventListener('click', async () => {
             if (!outputEl.value) return;
-            
+
             try {
                 await navigator.clipboard.writeText(outputEl.value);
                 const originalText = copyBtn.textContent;
                 const originalClass = copyBtn.className;
                 copyBtn.textContent = 'Copied!';
                 copyBtn.className = 'w-full py-3 px-6 btn-success font-semibold rounded-xl transition-all transform hover:scale-[1.02] active:scale-[0.98] shadow-lg';
-                
+
                 setTimeout(() => {
                     copyBtn.textContent = originalText;
                     copyBtn.className = originalClass;
@@ -219,6 +217,100 @@
                 console.error('Failed to copy:', err);
             }
         });
+
+        // Tagline rotation with sweep animation
+        const taglines = [
+            'Transform words like "internationalization" into "i18n"',
+            '"localization" becomes "l10n"',
+            '"accessibility" becomes "a11y"',
+            '"kubernetes" becomes "k8s"',
+            'Because typing long words is so last century',
+            'The future of typing less',
+            'Shorten your words, expand your vocabulary',
+            'When you need to save keystrokes',
+            'Abbreviation innovation',
+            'Less typing, more doing',
+            'Making long words manageable',
+            'For the lazy typist in all of us',
+            'The art of lexical compression',
+            'Because every character counts',
+            'Simplify your vocabulary'
+        ];
+
+        const taglineEl = document.getElementById('tagline');
+        // Start at a random tagline
+        let currentTaglineIndex = Math.floor(Math.random() * taglines.length);
+        let sweepInterval = null;
+
+        function sweepTransform(text) {
+            // Split into tokens, keeping track of quoted words
+            const tokens = text.match(/"[^"]*"|\S+|\s+/g) || [];
+            const wordInfo = tokens.map((token, i) => {
+                // Check if it's a quoted word like "internationalization"
+                const quotedMatch = token.match(/^"([a-zA-Z0-9]+)"$/);
+                if (quotedMatch) {
+                    return {
+                        index: i,
+                        isQuoted: true,
+                        innerWord: quotedMatch[1],
+                        prefix: '"',
+                        suffix: '"'
+                    };
+                }
+                // Regular word
+                return {
+                    index: i,
+                    isQuoted: false,
+                    innerWord: token,
+                    prefix: '',
+                    suffix: ''
+                };
+            });
+
+            // Show original first
+            taglineEl.textContent = text;
+
+            // Identify which tokens are words that can be transformed (any alphanumeric word)
+            const wordIndices = wordInfo.filter(w => /^[a-zA-Z0-9]/.test(w.innerWord)).map(w => w.index);
+
+            if (wordIndices.length === 0) return;
+
+            // Wait 2 seconds before starting sweep, then transform each word
+            setTimeout(() => {
+                let currentWordIdx = 0;
+                sweepInterval = setInterval(() => {
+                    if (currentWordIdx >= wordIndices.length) {
+                        clearInterval(sweepInterval);
+                        return;
+                    }
+
+                    const tokenIdx = wordIndices[currentWordIdx];
+                    const info = wordInfo[tokenIdx];
+                    const encoded = toNumeronym(info.innerWord);
+                    tokens[tokenIdx] = info.prefix + encoded + info.suffix;
+                    taglineEl.textContent = tokens.join('');
+
+                    currentWordIdx++;
+                }, 120);
+            }, 2000);
+        }
+
+        function updateTagline() {
+            if (sweepInterval) {
+                clearInterval(sweepInterval);
+            }
+
+            const tagline = taglines[currentTaglineIndex];
+            currentTaglineIndex = (currentTaglineIndex + 1) % taglines.length;
+
+            sweepTransform(tagline);
+        }
+
+        // Initial tagline
+        updateTagline();
+
+        // Change tagline every 8 seconds (gives time for delay + sweep animation)
+        setInterval(updateTagline, 8000);
     </script>
 </body>
 </html>
