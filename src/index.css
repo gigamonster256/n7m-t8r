@@ -1,0 +1,127 @@
+@import "tailwindcss";
+
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --gunmetal-50: oklch(96.26% 0.002 197.12);
+    --gunmetal-100: oklch(92.69% 0.006 183.02);
+    --gunmetal-200: oklch(85.27% 0.011 189.78);
+    --gunmetal-300: oklch(77.53% 0.014 191.30);
+    --gunmetal-400: oklch(69.75% 0.021 188.60);
+    --gunmetal-500: oklch(61.81% 0.027 190.03);
+    --gunmetal-600: oklch(52.63% 0.022 188.31);
+    --gunmetal-700: oklch(43.06% 0.016 190.87);
+    --gunmetal-800: oklch(33.11% 0.014 189.13);
+    --gunmetal-900: oklch(22.09% 0.008 182.20);
+    --gunmetal-950: oklch(18.34% 0.005 196.75);
+    --deep-teal-500: oklch(61.38% 0.036 154.88);
+    --celadon-400: oklch(74.78% 0.110 155.35);
+    --celadon-500: oklch(69% 0.133 153.77);
+    --celadon-600: oklch(58.54% 0.112 153.69);
+    --emerald-400: oklch(76.30% 0.154 147.50);
+    --emerald-500: oklch(71.17% 0.184 146.13);
+    --emerald-600: oklch(60.47% 0.154 146.24);
+    --tropical-mint-400: oklch(83.42% 0.148 167.43);
+    --tropical-mint-500: oklch(80.51% 0.166 164.38);
+}
+
+html, body {
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+    background: linear-gradient(135deg, var(--gunmetal-900) 0%, var(--gunmetal-800) 50%, var(--gunmetal-950) 100%);
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+}
+
+.title-gradient {
+    background: linear-gradient(90deg, var(--celadon-400), var(--tropical-mint-400), var(--emerald-400));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.card-bg {
+    background: color-mix(in oklch, var(--gunmetal-800), transparent 50%);
+    border: 1px solid var(--gunmetal-700);
+}
+
+textarea.input-bg {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: color-mix(in oklch, var(--gunmetal-950), transparent 20%);
+    border: 1px solid var(--gunmetal-600);
+    border-radius: 0.75rem;
+    color: var(--gunmetal-100);
+    caret-color: var(--celadon-400);
+    font-family: inherit;
+    font-size: 1rem;
+    line-height: 1.5;
+    resize: none;
+    outline: none;
+}
+
+textarea.input-bg:focus {
+    border-color: var(--celadon-500);
+    box-shadow: 0 0 0 2px color-mix(in oklch, var(--celadon-500), transparent 70%);
+}
+
+textarea.input-bg.output-text {
+    color: var(--tropical-mint-400);
+}
+
+button.btn-primary {
+    width: 100%;
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(90deg, var(--celadon-600), var(--emerald-600));
+    color: white;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 0.75rem;
+    cursor: pointer;
+    outline: none;
+}
+
+button.btn-primary:hover {
+    background: linear-gradient(90deg, var(--celadon-500), var(--emerald-500));
+}
+
+button.btn-success {
+    background: linear-gradient(90deg, var(--emerald-600), var(--deep-teal-500));
+}
+
+.icon-color {
+    color: var(--celadon-400);
+}
+
+.label-text {
+    color: var(--gunmetal-300);
+}
+
+.subtitle-text {
+    color: var(--gunmetal-400);
+}
+
+.footer-text {
+    color: var(--gunmetal-500);
+}
+
+.arrow-bg {
+    background: color-mix(in oklch, var(--gunmetal-700), transparent 50%);
+}
+
+::placeholder {
+    color: var(--gunmetal-500);
+}

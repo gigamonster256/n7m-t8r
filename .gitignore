@@ -1,1 +1,10 @@
 .direnv/
+node_modules/
+dist/
+public/*.png
+public/*.ico
+assets/*.png
+*.log
+.DS_Store
+.env
+.env.local

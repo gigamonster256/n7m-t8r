@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Transform long words into compact numeronyms. Turn 'internationalization' into 'i18n' instantly!">
+    <meta name="theme-color" content="#0f1619">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://n7m-t8r.pages.dev/">
+    <meta property="og:title" content="N7M-T8R | Numeronym Translator">
+    <meta property="og:description" content="Transform long words into compact numeronyms. Turn 'internationalization' into 'i18n' instantly!">
+    <meta property="og:image" content="https://n7m-t8r.pages.dev/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://n7m-t8r.pages.dev/">
+    <meta name="twitter:title" content="N7M-T8R | Numeronym Translator">
+    <meta name="twitter:description" content="Transform long words into compact numeronyms. Turn 'internationalization' into 'i18n' instantly!">
+    <meta name="twitter:image" content="https://n7m-t8r.pages.dev/og-image.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+    <title>N7M-T8R | Numeronym Translator</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+    <!-- Critical CSS to prevent FOUC -->
+    <style>
+      html, body {
+        min-height: 100vh;
+        min-height: -webkit-fill-available;
+        margin: 0;
+        background: #0f1619;
+      }
+      body {
+        font-family: 'Inter', sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+      }
+      * { box-sizing: border-box; }
+      .w-full { width: 100%; }
+      .max-w-2xl { max-width: 42rem; }
+      .mx-auto { margin-left: auto; margin-right: auto; }
+      textarea {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        background: rgba(12, 18, 21, 0.8);
+        border: 1px solid #3d4f56;
+        border-radius: 0.75rem;
+        color: #d1d5db;
+        caret-color: #7dd3c0;
+        font-family: inherit;
+        font-size: 1rem;
+        line-height: 1.5;
+        resize: none;
+        outline: none;
+      }
+      textarea::placeholder {
+        color: #4b5563;
+      }
+      button {
+        width: 100%;
+        padding: 0.75rem 1.5rem;
+        font-family: inherit;
+        font-size: 1rem;
+        font-weight: 600;
+        border: none;
+        border-radius: 0.75rem;
+        cursor: pointer;
+        outline: none;
+        background: linear-gradient(90deg, #5f9d8e, #4d9372);
+        color: white;
+      }
+      .arrow-container {
+        display: flex;
+        justify-content: center;
+      }
+      .arrow-bg {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(61, 79, 86, 0.5);
+        border-radius: 50%;
+        padding: 0.5rem;
+      }
+      .arrow-icon {
+        width: 1.5rem;
+        height: 1.5rem;
+        color: #7dd3c0;
+      }
+    </style>
+
+    <script type="module" src="./index.js"></script>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4">
+    <div class="w-full max-w-2xl min-h-screen p-4 mx-auto">
+        <div class="text-center mb-8">
+            <h1 class="text-5xl font-extrabold title-gradient mb-2">
+                N7M-T8R
+            </h1>
+            <p class="subtitle-text text-lg">Numeronym Translator</p>
+        </div>
+        
+        <div class="card-bg backdrop-blur-lg rounded-2xl p-8 shadow-2xl">
+            <div class="space-y-4">
+                <div>
+                    <label for="input" class="block text-sm font-semibold label-text mb-2 uppercase tracking-wider">
+                        Input
+                    </label>
+                    <textarea 
+                        id="input" 
+                        rows="4"
+                        class="input-bg"
+                        placeholder="Type something here..."
+                    ></textarea>
+                </div>
+                
+                <div class="arrow-container">
+                    <div class="arrow-bg">
+                        <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                        </svg>
+                    </div>
+                </div>
+                
+                <div class="-mt-2">
+                    <label for="output" class="block text-sm font-semibold label-text mb-2 uppercase tracking-wider">
+                        Output
+                    </label>
+                    <textarea 
+                        id="output" 
+                        rows="4"
+                        readonly
+                        class="input-bg output-text"
+                        placeholder="Numeronym will appear here..."
+                    ></textarea>
+                </div>
+                
+                <button 
+                    id="copyBtn"
+                    class="btn-primary"
+                    style="--tw-shadow-color: color-mix(in oklch, var(--celadon-600), transparent 75%);"
+                >
+                    Copy to Clipboard
+                </button>
+            </div>
+        </div>
+        
+        <p id="tagline" class="text-center footer-text mt-6 text-sm"></p>
+    </div>
+</body>
+</html>
