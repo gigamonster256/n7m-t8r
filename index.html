@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>N7M-T8R | Numeronym Translator</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -34,12 +34,19 @@
         
         html, body {
             min-height: 100vh;
+            min-height: -webkit-fill-available;
             background: linear-gradient(135deg, var(--gunmetal-900) 0%, var(--gunmetal-800) 50%, var(--gunmetal-950) 100%);
             background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         }
 
         body {
             font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            min-height: -webkit-fill-available;
         }
         
         .title-gradient {
@@ -108,7 +115,7 @@
     </style>
 </head>
 <body class="min-h-screen flex items-center justify-center p-4">
-    <div class="w-full max-w-2xl">
+    <div class="w-full max-w-2xl min-h-screen p-4 mx-auto">
         <div class="text-center mb-8">
             <h1 class="text-5xl font-extrabold title-gradient mb-2">
                 N7M-T8R
@@ -117,7 +124,7 @@
         </div>
         
         <div class="card-bg backdrop-blur-lg rounded-2xl p-8 shadow-2xl">
-            <div class="space-y-6">
+            <div class="space-y-4">
                 <div>
                     <label for="input" class="block text-sm font-semibold label-text mb-2 uppercase tracking-wider">
                         Input
@@ -138,7 +145,7 @@
                     </div>
                 </div>
                 
-                <div>
+                <div class="-mt-2">
                     <label for="output" class="block text-sm font-semibold label-text mb-2 uppercase tracking-wider">
                         Output
                     </label>
