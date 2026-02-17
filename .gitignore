@@ -8,3 +8,6 @@ assets/*.png
 .DS_Store
 .env
 .env.local
+
+result
+result-*
